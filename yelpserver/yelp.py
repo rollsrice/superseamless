@@ -17,8 +17,6 @@ SEARCH_LIMIT = 3
 SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business/'
 
-DEBUG = True
-
 yelp_client = None
 
 class Yelp():
@@ -155,6 +153,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--server', dest='server', default=None,
                         type=str, help='Server where this is running')
+    parser.add_argument('-d', '--debug', dest='debug', default=False,
+                        type=bool, help='Debug mode')
     input_values = parser.parse_args()
 
     # if the server is heroku then load secrets from heroku config vars
@@ -163,12 +163,17 @@ if __name__ == '__main__':
         secret = os.environ['YELP_CONSUMER_SECRET']
         token = os.environ['YELP_TOKEN']
         token_secret = os.environ['YELP_TOKEN_SECRET']
+        yelp_client = Yelp(key, secret, token, token_secret)
+        port = int(os.environ['PORT'])
+        app.run(host='0.0.0.0', port=port)
+
     else:
-        # else load from a keyfile
+        # else load from a keyfile for running locally
         with open('keyfile', 'r') as f:
             key = f.readline().strip()
             secret = f.readline().strip()
             token = f.readline().strip()
             token_secret = f.readline().strip()
-    yelp_client = Yelp(key, secret, token, token_secret)
-    app.run(debug=DEBUG)
+        app.run(debug=input_values.debug)
+
+
