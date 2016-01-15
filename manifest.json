@@ -1,0 +1,13 @@
+{
+  "name": "Seamfull of Yelp",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Add Yelp ratings to Seamless",
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
+}
