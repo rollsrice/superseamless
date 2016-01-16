@@ -6,6 +6,13 @@
   "permissions": [
     "storage"
   ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["main.css"],
+      "js": ["jquery-2.2.0.min.js", "script.js"]
+    }
+  ],
   "options_ui": {
     "page": "options.html",
     "chrome_style": true

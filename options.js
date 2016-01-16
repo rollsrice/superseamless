@@ -17,8 +17,8 @@ function save_location() {
 // stored in chrome.storage.
 function restore_location() {
   // Use default value color = 'red' and likesColor = true.
-  chrome.storage.sync.get('location', function(items) {
-    $('#city').val(items.location);
+  chrome.storage.sync.get('location', function(item) {
+    $('#city').val(item.location);
   });
 }
 
