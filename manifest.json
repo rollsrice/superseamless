@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["*://www.seamless.com/Meals*"],
-      "css": ["main.css"],
+      "css": ["stylesheets/screen.css"],
       "js": ["jquery-2.2.0.min.js", "script.js"]
     }
   ],

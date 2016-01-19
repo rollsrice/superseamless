@@ -1,0 +1,42 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+
+$colors: (
+  5: #dd050b,
+  4: #f26a2c,
+  3: #f0991e,
+  2: #dcb229,
+  1: #cc8b1f);
+
+.rating i {
+  font-size: 30px;
+  color: white;
+  background: #eee;
+  font-style: normal;
+  text-shadow: 1px 1px 2px black;
+  border-radius: 5px;
+}
+
+@function star-color($num) {
+  @if map-has-key($colors, $num) {
+    @return map-get($colors, $num);
+  }
+}
+
+@for $i from 1 through 5 {
+  @for $j from 1 through $i {
+    .rating-#{$i} .star-#{$j},
+    .rating-#{$i}-half .star-#{$j} {
+      border-color: star-color($i);
+      background: star-color($i);
+    }
+  }
+.rating-#{$i}-half .star-#{$i+1} {
+  background: linear-gradient(90deg, star-color($i) 1%, #eee);
+  }
+}

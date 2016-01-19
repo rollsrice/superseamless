@@ -1,6 +1,24 @@
 var displayRating = function(i, rating) {
   var $ratings = $('#resultstable').find('.yelp');
-  $ratings.eq(i).text(rating);
+  $ratings.eq(i).html(yelpStars(rating));
+};
+
+var isInt = function(num) {
+  return num % 1 === 0;
+};
+
+var yelpStars = function(rating) {
+  var stars =  '<div class="rating rating-' + Math.floor(rating);
+  if (!isInt(rating)) {
+    stars += '-half';
+  }
+  stars += '"><i class="star-1">★</i>'+
+              '<i class="star-2">★</i>'+
+              '<i class="star-3">★</i>'+
+              '<i class="star-4">★</i>'+
+              '<i class="star-5">★</i>'+
+            '</div>';
+  return stars;
 };
 
 var getYelpRating = function(i, restaurantName) {
