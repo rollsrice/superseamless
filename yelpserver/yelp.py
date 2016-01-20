@@ -174,6 +174,7 @@ if __name__ == '__main__':
             secret = f.readline().strip()
             token = f.readline().strip()
             token_secret = f.readline().strip()
+        yelp_client = Yelp(key, secret, token, token_secret)
         app.run(debug=input_values.debug)
 
 
