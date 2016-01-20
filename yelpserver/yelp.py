@@ -119,11 +119,11 @@ class Yelp():
 
         return response
 
-    def get_rating(self, name, location):
+    def get_business(self, name, location):
         business = self._query_api(name, location)
 
         if business is not None:
-            return business['rating']
+            return {'url': business['url'], 'rating': business['rating']}
         else:
             return None
 
@@ -142,10 +142,10 @@ def search_yelp():
     if location is None:
         return "param: location not specified"
 
-    rating = yelp_client.get_rating(name, location)
+    business = yelp_client.get_business(name, location)
 
-    if rating is not None:
-        return jsonify({'rating': rating})
+    if business is not None:
+        return jsonify(business)
     else:
         return "no businesses found"
 

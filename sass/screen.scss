@@ -6,6 +6,10 @@
 @import "compass/reset";
 @import "compass/css3";
 
+a.yelp-link:hover {
+  text-decoration: none !important;
+}
+
 $colors: (
   5: #dd050b,
   4: #f26a2c,
