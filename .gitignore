@@ -56,5 +56,9 @@ docs/_build/
 # PyBuilder
 target/
 
+# Ignore compiled stylesheets
+.sass-cache
+stylesheets/*
+
 # Others
 keyfile
